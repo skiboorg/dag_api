@@ -26,6 +26,10 @@ class GetTour(generics.RetrieveAPIView):
     lookup_field = 'slug'
 
 class CreateForm(APIView):
+    def initialize_request(self, request, *args, **kwargs):
+        setattr(request, 'csrf_processing_done', True)
+        return super().initialize_request(request, *args, **kwargs)
+
     def post(self,request):
         data = request.data
         CallbackForm.objects.create(**data)
