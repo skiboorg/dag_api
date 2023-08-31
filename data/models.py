@@ -124,8 +124,8 @@ class TourGalleryImage(models.Model):
 
     class Meta:
         ordering = ('is_main',)
-        verbose_name = 'Картинка товара'
-        verbose_name_plural = 'Картинки товаров'
+        verbose_name = 'Картинка галерей'
+        verbose_name_plural = 'Картинки галерей'
 
 
 class CallbackForm(models.Model):
