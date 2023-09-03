@@ -17,6 +17,19 @@ class TourGalleryImageSerializer(serializers.ModelSerializer):
         model = TourGalleryImage
         fields = '__all__'
 
+class FeedbackImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FeedbackImage
+        fields = '__all__'
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    images = FeedbackImageSerializer(many=True, required=False, read_only=True)
+
+    class Meta:
+        model = Feedback
+        fields = '__all__'
+
 class TourDayPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = TourDayPlan

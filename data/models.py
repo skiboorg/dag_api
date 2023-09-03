@@ -144,3 +144,34 @@ class CallbackForm(models.Model):
         ordering = ('-created_at',)
         verbose_name = 'Форма обратной связи'
         verbose_name_plural = 'Формы обратной связи'
+
+
+class Feedback(models.Model):
+    avatar = ResizedImageField(size=[100, 100], quality=95, force_format='WEBP', upload_to='ava/',
+                              blank=False, null=True)
+    text = RichTextUploadingField(max_length=255,blank=True, null=True)
+    name = models.CharField(max_length=255,blank=True, null=True)
+    tour = models.CharField(max_length=255,blank=True, null=True)
+
+    def __str__(self):
+        return f'От {self.name}'
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+
+
+class FeedbackImage(models.Model):
+    feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE, null=True, blank=False,
+                                related_name='images')
+    image = ResizedImageField(size=[120, 200], quality=95, force_format='WEBP', upload_to='fb/gallery',
+                              blank=False, null=True)
+
+    def __str__(self):
+        return f''
+
+
+    class Meta:
+        verbose_name = 'Картинка отзыва'
+        verbose_name_plural = 'Картинки отзывов'

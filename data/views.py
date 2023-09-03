@@ -19,6 +19,10 @@ class GetCategories(generics.ListAPIView):
     serializer_class = TourCategorySerializer
     queryset = TourCategory.objects.all()
 
+class GetFeedbacks(generics.ListAPIView):
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all()
+
 
 class GetTour(generics.RetrieveAPIView):
     serializer_class = TourSerializer

@@ -9,6 +9,9 @@ from .models import *
 class TourFeatureInline(NestedStackedInline):
     model = TourFeature
     extra = 0
+class FeedbackImageInline(NestedStackedInline):
+    model = FeedbackImage
+    extra = 0
 
 class NearestTourInline(NestedStackedInline):
     model = NearestTour
@@ -32,6 +35,10 @@ class TourGalleryImageImageInline(NestedStackedInline):
 
     image_preview.short_description = 'Текущее изображение'
 
+
+class FeedbackAdmin(NestedModelAdmin):
+    model = Feedback
+    inlines = [FeedbackImageInline]
 
 class TourAdmin(NestedModelAdmin):
     model = Tour
@@ -65,3 +72,4 @@ class TourAdmin(NestedModelAdmin):
 admin.site.register(Tour, TourAdmin)
 admin.site.register(TourCategory)
 admin.site.register(CallbackForm)
+admin.site.register(Feedback,FeedbackAdmin)
