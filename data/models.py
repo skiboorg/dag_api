@@ -149,7 +149,7 @@ class CallbackForm(models.Model):
 class Feedback(models.Model):
     avatar = ResizedImageField(size=[100, 100], quality=95, force_format='WEBP', upload_to='ava/',
                               blank=False, null=True)
-    text = RichTextUploadingField(max_length=255,blank=True, null=True)
+    text = RichTextUploadingField(blank=True, null=True)
     name = models.CharField(max_length=255,blank=True, null=True)
     tour = models.CharField(max_length=255,blank=True, null=True)
 
